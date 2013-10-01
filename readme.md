@@ -78,32 +78,27 @@ But certainly use comments to explain bad design or bad naming forced upon you. 
 
 
 
-#### Try to write comments after the line referred to
-
-This is just a preference, but I've really taken to writing comments after the code. I find it to be much easier to read, and much more informative. It also encourages the comments to not repeat what the code says. I now declare my structs like this:
+#### Try to write comments before the line referred to
 
 ``` c
-typedef struct Alphabet {
 // An Alphabet defines an ordering of characters, such that each
 // character in the Alphabet has exactly one corresponding index.
+typedef struct Alphabet {
 
-    int size;
     // The number of characters in this Alphabet.
+    int size;
 
-    int ( *index_for )( char );
     // Returns the index for the given character, or -1 if that char
     // isn't in this Alphabet. The index must be less than the
     // Alphabet's size.
+    int ( *index_for )( char );
 
-    char ( *char_for )( int );
     // Returns the character associated with the given index, or
     // `Trie_ERR` if the index is invalid ( < 0 or >= size ).
-
+    char ( *char_for )( int );
+    
 } Alphabet;
 ```
-
-But, if the comment will refer to a multi-line block of code, I'll still put the comment at the top.
-
 
 
 #### Program in American English
